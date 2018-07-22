@@ -1,0 +1,32 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+int trans(int x,int y)    //求x的y次方
+{
+    int p=1;
+    while(y--)
+    {
+        p*=x;
+    }
+    return p;
+}
+int main()
+{
+    cout << "put in your code:" << endl;
+    char s[100];
+    cin>>s;
+    int n,digit=0;
+    n=strlen(s);
+    for(int i=0;i<n;i++)
+    {
+
+        if(s[i]!='0')
+        {
+            digit+=trans(2,n-i-1);
+
+        }
+    }
+    cout<<digit<<endl;
+    return 0;
+}
+
