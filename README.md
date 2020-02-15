@@ -1,2 +1,2 @@
 # C-code
-some codes uesd by c++
+some codes uesd by c
