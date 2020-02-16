@@ -1,0 +1,52 @@
+#include<stdio.h>
+
+void quick_sort(int arr[],int low,int high)
+{
+    if(low>=high)
+        return ;
+    int front,last,pivot;
+    front=low;
+    last=high;
+    pivot=arr[low];
+    while(front<last)
+    {
+        while(arr[last]>=pivot&&front<last)
+        {
+            last--;
+        }
+        if(front<last)
+        {
+            arr[front]=arr[last];
+        }
+
+        while(arr[front]<=pivot&&front<last)
+        {
+            front++;
+        }
+        if(front<last)
+        {
+            arr[last]=arr[front];
+        }
+
+        if(front>=last)
+        {
+            arr[front]=pivot;
+        }
+
+    }
+
+    quick_sort(arr,low,front-1);
+    quick_sort(arr,front+1,high);
+}
+
+int main()
+{
+    int a[]={-3,3,78,6,9,0};
+    int len=(int)sizeof(a)/sizeof(a[0]);
+    quick_sort(a,0,len-1);
+    for(int i;i<len;i++)
+    {
+        printf("%d   ",a[i]);
+    }
+    return 0;
+}
