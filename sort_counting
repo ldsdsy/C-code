@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+void counting_sort(int arr[],int len)
+{
+    int  max,min;
+    max=arr[0];
+    min=arr[0];
+    for(int i=1;i<len;i++)
+    {
+        if(max<arr[i])
+            max=arr[i];
+        if(min>arr[i])
+            min=arr[i];
+
+    }
+    int len_c=max-min+1;
+    int *count= (int *) malloc(sizeof(int) * len_c);
+    for(int i=0;i<len_c;i++)
+        count[i]=0;
+    for(int i=0;i<len;i++)
+    {
+        count[arr[i]-min]++;
+    }
+
+    int result[len];
+    for(int i=0,j=0;i<len_c;i++)
+    {
+        while(count[i]>0)
+        {
+            result[j++]=i+min;
+            count[i]--;
+        }
+    }
+
+    for(int i=0;i<len;i++)
+        printf("%d   ",result[i]);
+
+}
+
+
+int main()
+{
+    int a[]={100,178,156,123,109};
+    int len=(int)sizeof(a)/sizeof(a[0]);
+    counting_sort(a,len);
+    return 0;
+}
