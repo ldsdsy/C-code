@@ -1,0 +1,28 @@
+#include<stdio.h>
+
+void bucket_sort(int arr[],int len)
+{
+    int bucket[101]={0};    //0<=arr[i]<=100
+    for(int i=0;i<len;i++)
+    {
+        bucket[arr[i]]++;
+    }
+
+    for(int i=0;i<101;i++)
+    {
+        while(bucket[i]>0)
+        {
+            printf("%d   ",i);
+            bucket[i]--;
+        }
+
+    }
+}
+
+int main()
+{
+    int a[]={2,8,67,56,34,7,4,8,67};
+    int len=(int)sizeof(a)/sizeof(a[0]);
+    bucket_sort(a,len);
+    return 0;
+}
